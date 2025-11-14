@@ -1,3 +1,32 @@
+.site-header {
+    display: flex
+;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, #083b66, #0a4b78);
+    color: #fff;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+header {
+    display: block;
+    unicode-bidi: isolate;
+}
+body {
+    font-family: Segoe UI, Arial, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: #082a47;
+}
+:root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --accent: #0a4b78;
+    --muted: #6b7b8a;
+}
 /* Employee Contract page styles */
 .contract-view { background: #fff;
     border: 1px solid #ccc; 
