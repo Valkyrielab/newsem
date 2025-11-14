@@ -170,5 +170,25 @@ UPDATE EmploymentContract
 SET lastUpdatedBy = 'Michelle Muller', lastUpdatedDate = GETDATE()
 
 
-INSERT INTO ContextMemory (UserID, ContextType, ContextKey, ContextValue)
-VALUES ('123', 'Trigger', 'stress', 'Take a deep breath. Or better yet, let me handle it.');
+SELECT EC.EmploymentContractID, EC.Firstname, EC.Surname, EC.JobTitle,
+       CN.CompanyName, CT.ContractType, EC.ContractStatus
+FROM EmploymentContract EC
+JOIN CompanyName CN ON EC.CompanyNameID = CN.CompanyNameID
+JOIN ContractType CT ON EC.ContractTypeID = CT.ContractTypeID;
+
+SELECT AC.FileName, EC.Firstname, EC.Surname, EC.JobTitle, CN.CompanyName
+FROM ApprovedContracts AC
+JOIN EmploymentContract EC ON AC.EmploymentContractID = EC.EmploymentContractID
+JOIN CompanyName CN ON EC.CompanyNameID = CN.CompanyNameID;
+
+DELETE FROM EmploymentContract WHERE EmploymentContractID = 1;
+DELETE FROM ContractType WHERE ContractTypeID = 1;
+DELETE FROM CompanyName WHERE CompanyNameID = 1;    
+
+SELECT EmploymentContractID, Firstname, Surname, lastUpdatedBy, lastUpdatedDate
+FROM EmploymentContract
+WHERE lastUpdatedDate IS NOT NULL
+ORDER BY lastUpdatedDate DESC;
+-- v --- IGNORE ---
+-- End of SQLFile2.sql  
+--
