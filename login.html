@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="Viewport" content="Width=device-width,intial-scale=1"/>
+        <title> Login </title>
+        <link rel="stylesheet" href="main.css"/>
+    </head>
+    <body>
+        <header class="site-header"> 
+             <img scr="image/logo.jpg" alt="logo"/>
+             <h1 >ContractCom</h1>
+        </header>
+        <main class="center">
+            <section class="login-Card">
+                <h2> Login to your account </h2>
+                <form id="loginForm">
+                    <label for="username"> Username: </label>
+                    <input type="text" id="username" name="username" required autofocus/>
+                        <br/>
+                    <label for="password"> Password: </label>
+                    <input type="text" id="password" name="password" required/>
+
+                    <div class="form-row">
+                        <button type="submit" class="btn primary">Login</button>
+                        <button type="button" id="demoAdmin" class="btn"> Demo Admin</button>
+                        <button type="button" id="demoUser" class="btn"> Demo User</button>
+                    </div>
+                        <input type="checkbox" id="rememberMe" name="rememberMe"/>
+                        <label for="rememberMe"> Remember Me </label>
+                        <p id="error" class="error" aria-live="polite"></p>
+                </form>
+                <p class="muted"> Demo credentials: admin / admin123 or user / user123</p>
+                <p> Don't have an account? <a href="register.html"> Register here </a> </p>
+            </section>
+        </main>
+        <script src="main.js"></script>
+    </body>
+</html>
