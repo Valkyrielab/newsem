@@ -1,0 +1,123 @@
+:root{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --accent:#0a4b78;
+  --muted:#6b7b8a;
+}
+*{box-sizing:border-box}
+body{font-family:Segoe UI, Arial, sans-serif;
+    margin:0;
+    background:var(--bg);
+    color:#082a47}
+
+.greetings{
+    margin-top:24px;
+    font-size:1.2rem;
+    font-weight:600;
+    text-align: center;
+    /* center any child blocks horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-header{display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 16px;
+    background:linear-gradient(90deg,#083b66, #0a4b78);
+    color:#fff}
+
+.logo{width:56px;
+    height:auto}
+
+.main-nav{display:flex;
+    gap:10px}
+
+.main-nav a{color:#fff;
+    text-decoration:none;
+    padding:6px 10px;
+    border-radius:6px;
+    background:rgba(255,255,255,0.06)}
+.main-nav a:hover{background:rgba(255,255,255,0.12)}
+
+.user-area{margin-left:auto;
+    display:flex;gap:8px;
+    align-items:center}
+
+.center{max-width:920px;
+    margin:48px auto;
+    padding:0 16px}
+
+.card{background:var(--card);
+    padding:18px;
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(8,59,102,0.06)}
+
+.login-card{width:100%;
+    max-width:420px;
+    margin:48px auto;
+    text-align:left}
+    
+label{display:block;
+    margin-top:12px;
+    font-weight:600}
+
+input[type=text],input[type=password]{width:100%;
+    padding:8px;
+    border-radius:6px;
+    border:1px solid #d6e9f6;
+    margin-top:6px}
+
+.form-row{display:flex;
+    gap:8px;
+    align-items:center;
+    margin-top:12px}
+
+.btn{background:transparent;
+    border:1px solid rgba(8,59,102,0.12);
+    padding:8px 10px;
+    border-radius:6px;
+    cursor:pointer}
+
+.btn.primary{background:var(--accent);
+    color:#fff;
+    border:none}
+
+.btn.primary:hover{background:#083b66}
+
+.muted{color:var(--muted)}
+
+.error{color:#b00020;margin-top:8px}
+
+.panel{margin-top:12px;
+    padding:12px;
+    border-radius:6px;
+    border:1px solid rgba(8,59,102,0.06)}
+
+.panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+
+.panel li {
+  margin: 8px 0;
+}
+
+.panel a {
+  color: #0a4b78;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.panel a:hover {
+  text-decoration: underline;
+}
+
+/* responsive */
+@media (max-width:640px){.site-header{flex-wrap:wrap}.main-nav{order:2;
+    width:100%;
+    display:flex;
+    gap:6px;
+    justify-content:center}}
