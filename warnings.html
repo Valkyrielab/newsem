@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — ContractCom</title>
+  <link rel="stylesheet" href="Warning.css" />
+  <link rel="stylesheet" href="Styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      
+      <a href="home.html" id="nav-user" class="role-only user-only">Home</a>
+      <a href="UserManagement.html" id="nav-admin" class="role-only admin-only">User Management</a>
+      <a href="AdminDashboard.html" id="nav-admin" class="role-only admin-only">Admin Dashboard</a>
+      <a href="Users/Contracts.html" id="nav-user" class="role-only user-only">Contracts</a>
+      <a href="Users/ApprovalsSub.html" id="nav-user" class="role-only user-only">Approvals & Submissions</a>
+      <a href="Login.html" id="nav-home">Login</a>
+    </nav>
+    </header>
+   <main class="center">
+    <section class="card">
+      <h2>Employee Warnings</h2>
+      <p class="muted">Track and manage employee disciplinary warnings.</p>
+        <div class = "LocateBar">
+            
+        </div>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by employee name or username..." class="search-input" />
+        <select id="sortSelect" class="select">
+          <option value="">Sort</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="date-newest">Warning Date: Newest</option>
+          <option value="date-oldest">Warning Date: Oldest</option>
+        </select>
+        <button id="clearSearch" class="btn">Clear</button>
+        <button id="addNew" class="btn primary">+ Issue Warning</button>
+      </div>
+
+      <div id="warningsList" class="warnings-list" aria-live="polite"></div>
+      <p id="emptyMsg" class="muted">No warnings found.</p>
+
+      <template id="warningItemTemplate">
+        <div class="warning-card">
+          <div class="warning-header">
+            <div class="warning-title"></div>
+            <div class="warning-meta muted"></div>
+          </div>
+          <div class="warning-details">
+            <p><strong>Employee:</strong> <span class="empName">—</span></p>
+            <p><strong>Warning Date:</strong> <span class="warningDate">—</span></p>
+            <p><strong>Level:</strong> <span class="level warning-badge">—</span></p>
+            <p><strong>Reason:</strong> <span class="reason">—</span></p>
+            <p><strong>Notes:</strong> <span class="notes">—</span></p>
+          </div>
+
+          
+          <div class="warning-actions">
+            <button class="btn-small view">View</button>
+            <button class="btn-small edit">Edit</button>
+            <button class="btn-small export">Export</button>
+            <button class="btn-small delete danger">Delete</button>
+          </div>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <div id="warningModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Issue Warning</h3>
+        <button id="closeModal" class="close">&times;</button>
+      </div>
+      <form id="warningForm">
+        <div class="form-group">
+          <label for="formUsername">Employee Username *</label>
+          <input id="formUsername" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formEmpName">Employee Name *</label>
+          <input id="formEmpName" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formWarningDate">Warning Date *</label>
+          <input id="formWarningDate" type="date" required />
+        </div>
+        <div class="form-group">
+          <label for="formLevel">Warning Level *</label>
+          <select id="formLevel" required>
+            <option value="">-- Select Level --</option>
+            <option value="Verbal">Verbal Warning</option>
+            <option value="Written">Written Warning</option>
+            <option value="Final">Final Warning</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="formReason">Reason *</label>
+          <textarea id="formReason" rows="4" required placeholder="Reason for warning..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="formNotes">Notes</label>
+          <textarea id="formNotes" rows="3" placeholder="Additional notes..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save Warning</button>
+          <button type="button" id="cancelForm" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="auth.js"></script>
+<script src="Users/warning.js"></script>
+<script src="warning.js"></script>
+</html>
