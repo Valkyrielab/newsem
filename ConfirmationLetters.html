@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Confirmation Letters — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="ConfirmationLetters.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="AdminDashboard.html" class="admin-only">Admin Dashboard</a>
+      <a href="UserManagement.html" class="admin-only">User Management</a>
+      <a href="Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Confirmation Letters</h2>
+      <p class="muted">Manage employee confirmation letters and employment verification documents.</p>
+
+      <!-- Search & Filter -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by employee name or username..." class="search-input" />
+        <select id="sortSelect" class="select">
+          <option value="">Sort</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="date-newest">Issue Date: Newest</option>
+          <option value="date-oldest">Issue Date: Oldest</option>
+        </select>
+        <button id="clearSearch" class="btn">Clear</button>
+        <button id="addNew" class="btn primary">+ Issue New Letter</button>
+      </div>
+
+      <!-- Letters List -->
+      <div id="lettersList" class="letters-list" aria-live="polite"></div>
+      <p id="emptyMsg" class="muted">No confirmation letters found.</p>
+
+      <!-- Letter Item Template -->
+      <template id="letterItemTemplate">
+        <div class="letter-card">
+          <div class="letter-header">
+            <div class="letter-title"></div>
+            <div class="letter-meta muted"></div>
+          </div>
+          <div class="letter-details">
+            <p><strong>Employee:</strong> <span class="empName">—</span></p>
+            <p><strong>Issue Date:</strong> <span class="issueDate">—</span></p>
+            <p><strong>Letter Type:</strong> <span class="letterType">—</span></p>
+            <p><strong>Status:</strong> <span class="status letter-badge">—</span></p>
+          </div>
+          <div class="letter-actions">
+            <button class="btn-small view">View</button>
+            <button class="btn-small edit">Edit</button>
+            <button class="btn-small export">Export PDF</button>
+            <button class="btn-small delete danger">Delete</button>
+          </div>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <!-- Modal for Add/Edit Letter -->
+  <div id="letterModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Issue New Confirmation Letter</h3>
+        <button id="closeModal" class="close">&times;</button>
+      </div>
+      <form id="letterForm" class="letter-form">
+        <div class="form-group">
+          <label for="formUsername">Employee Username *</label>
+          <input id="formUsername" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formEmpName">Employee Full Name *</label>
+          <input id="formEmpName" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formLetterType">Letter Type *</label>
+          <select id="formLetterType" required>
+            <option value="">-- Select Letter Type --</option>
+            <option value="Employment Verification">Employment Verification</option>
+            <option value="Salary Certificate">Salary Certificate</option>
+            <option value="Service Certificate">Service Certificate</option>
+            <option value="Experience Letter">Experience Letter</option>
+            <option value="Confirmation of Employment">Confirmation of Employment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="formIssueDate">Issue Date *</label>
+          <input id="formIssueDate" type="date" required />
+        </div>
+        <div class="form-group">
+          <label for="formDetails">Letter Details</label>
+          <textarea id="formDetails" rows="6" placeholder="Enter the content or details for this letter..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="formStatus">Status</label>
+          <select id="formStatus">
+            <option value="Draft">Draft</option>
+            <option value="Issued">Issued</option>
+            <option value="Approved">Approved</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save Letter</button>
+          <button type="button" id="cancelForm" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+<div class="container">
+        <h2>Confirmation Letter Form</h2>
+        <form id="confirmationForm">
+            <label for="recipientName">Recipient Name:</label>
+            <input type="text" id="recipientName" name="recipientName" required>
+
+            <label for="recipientAddress">Recipient Address:</label>
+            <input type="text" id="recipientAddress" name="recipientAddress" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="bodyContent">Body Content:</label>
+            <textarea id="bodyContent" name="bodyContent" placeholder="Enter the main content of the letter..." required></textarea>
+
+            <label for="signatoryName">Authorized Signatory Name:</label>
+            <input type="text" id="signatoryName" name="signatoryName" required>
+
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" name="designation" required>
+
+            <button type="submit" class="btn">Generate Letter</button>
+        </form>
+    </div>
+
+
+  <script src="auth.js"></script>
+  <script src="ConfirmationLetters.js"></script>
+</body>
+</html>
