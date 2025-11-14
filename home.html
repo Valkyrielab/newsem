@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      
+      <a href="home.html" id="nav-user" class="role-only user-only">Home</a>
+      <a href="UserManagement.html" id="nav-admin" class="role-only admin-only">User Management</a>
+      <a href="AdminDashboard.html" id="nav-admin" class="role-only admin-only">Admin Dashboard</a>
+      <a href="Users/Contracts.html" id="nav-user" class="role-only user-only admin-only">Contracts</a>
+      <a href="Users/ApprovalsSub.html" id="nav-user" class="role-only user-only">Approvals & Submissions</a>
+      <a href="Login.html" id="nav-home">Login</a>
+    </nav>
+    <div class="user-area" id="userArea">
+      <!-- Filled by JS -->
+    </div>
+  </header>
+  <main class="top">
+    <!--Location bar-->
+        <div class = "LocateBar">
+            <a href="Users/warning.html" class="btn">Warning</a>
+            <a href="Users/warning.html" class="btn">Disciplinary Hearing </a>
+            <a href="Users/warning.html" class="btn">Termination</a>
+            
+        </div>
+
+  </main>
+    <main class="center">
+
+        <section class="card">
+          
+        <h2 id="greeting">Welcome to ContractCompiler</h2>
+        <p>This is your home page. Use the navigation links above to access your contracts, approvals, and submissions. If you're an admin, you can manage users and view the admin dashboard.</p>
+        </section>
+        
+  
+        <!--Location bar-->
+        <div class = "LocateBar">
+            <a href="home.html" class="btn">Home</a>
+        </div>
+
+    
+    </main>
+<body>
+
+</body>
+<script src="auth.js"></script>
+</html>
