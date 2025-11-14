@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Maternity Agreements — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="MaternityAgreement.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="AdminDashboard.html" class="admin-only">Admin Dashboard</a>
+      <a href="UserManagement.html" class="admin-only">User Management</a>
+      <a href="Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Maternity Agreements</h2>
+      <p class="muted">Track and manage employee maternity leave agreements.</p>
+
+      <!-- Search & Filter -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by employee name or username..." class="search-input" />
+        <select id="sortSelect" class="select">
+          <option value="">Sort</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="date-newest">Start Date: Newest</option>
+          <option value="date-oldest">Start Date: Oldest</option>
+        </select>
+        <button id="clearSearch" class="btn">Clear</button>
+        <button id="addNew" class="btn primary">+ Create New Agreement</button>
+      </div>
+
+      <!-- Agreements List -->
+      <div id="agreementsList" class="agreements-list" aria-live="polite"></div>
+      <p id="emptyMsg" class="muted">No maternity agreements found.</p>
+
+      <!-- Agreement Item Template -->
+      <template id="agreementItemTemplate">
+        <div class="agreement-card maternity-card">
+          <div class="agreement-header">
+            <div class="agreement-title"></div>
+            <div class="agreement-meta muted"></div>
+          </div>
+          <div class="agreement-details">
+            <p><strong>Employee:</strong> <span class="empName">—</span></p>
+            <p><strong>Start Date:</strong> <span class="startDate">—</span></p>
+            <p><strong>End Date:</strong> <span class="endDate">—</span></p>
+            <p><strong>Duration (Days):</strong> <span class="duration">—</span></p>
+            <p><strong>Status:</strong> <span class="status maternity-badge">—</span></p>
+          </div>
+          <div class="agreement-actions">
+            <button class="btn-small view">View</button>
+            <button class="btn-small edit">Edit</button>
+            <button class="btn-small export">Export PDF</button>
+            <button class="btn-small delete danger">Delete</button>
+          </div>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <!-- Modal for Add/Edit Agreement -->
+  <div id="agreementModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Create New Maternity Agreement</h3>
+        <button id="closeModal" class="close">&times;</button>
+      </div>
+      <form id="agreementForm" class="agreement-form">
+        <div class="form-group">
+          <label for="formUsername">Employee Username *</label>
+          <input id="formUsername" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formEmpName">Employee Full Name *</label>
+          <input id="formEmpName" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formStartDate">Maternity Leave Start Date *</label>
+          <input id="formStartDate" type="date" required />
+        </div>
+        <div class="form-group">
+          <label for="formEndDate">Maternity Leave End Date *</label>
+          <input id="formEndDate" type="date" required />
+        </div>
+        <div class="form-group">
+          <label for="formDuration">Duration (Days) - Auto-calculated</label>
+          <input id="formDuration" type="number" readonly />
+        </div>
+        <div class="form-group">
+          <label for="formPosition">Position</label>
+          <input id="formPosition" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="formDepartment">Department</label>
+          <input id="formDepartment" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="formStatus">Status</label>
+          <select id="formStatus">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="formNotes">Notes</label>
+          <textarea id="formNotes" rows="4" placeholder="Additional notes..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save Agreement</button>
+          <button type="button" id="cancelForm" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="MaternityAgreement.js"></script>
+</body>
+</html>

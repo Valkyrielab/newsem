@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>User Management — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="UserManagement.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="UserManagement.html" class="admin-only">User Management</a>
+      <a href="Users/Contracts.html" class="user-only">Contracts</a>
+      <a href="Users/ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>User Management</h2>
+      <p class="muted">Manage regular users and admin accounts. Only admins can access this page.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="users">Regular Users</button>
+        <button class="tab-btn" data-tab="admins">Admin Users</button>
+      </div>
+
+      <!-- Regular Users Tab -->
+      <div id="usersTab" class="tab-content active">
+        <h3>Regular Users</h3>
+        
+        <div class="controls">
+          <button id="addUserBtn" class="btn primary">Add New User</button>
+        </div>
+
+        <!-- Add/Edit User Form -->
+        <form id="userForm" class="user-form" style="display:none;">
+          <h4>User Details</h4>
+          <label for="userName">Username *</label>
+          <input id="userName" type="text" placeholder="e.g., john.doe" required />
+          <label for="userPassword">Password *</label>
+          <input id="userPassword" type="password" placeholder="Enter password" required />
+          <label for="userEmail">Email</label>
+          <input id="userEmail" type="email" placeholder="e.g., john@example.com" />
+          <label for="userFullName">Full Name</label>
+          <input id="userFullName" type="text" placeholder="John Doe" />
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Save User</button>
+            <button type="button" id="cancelUserBtn" class="btn">Cancel</button>
+          </div>
+        </form>
+
+        <!-- Users List -->
+        <div id="usersList" class="users-list" aria-live="polite">
+          <!-- Users will be rendered here -->
+        </div>
+
+        <template id="userItemTemplate">
+          <div class="user-item">
+            <div class="user-info">
+              <div class="user-name"></div>
+              <div class="user-email muted"></div>
+            </div>
+            <div class="user-actions">
+              <button class="btn edit">Edit</button>
+              <button class="btn danger delete">Delete</button>
+            </div>
+          </div>
+        </template>
+
+        <p id="emptyUsersMsg" class="muted">No regular users yet.</p>
+      </div>
+
+      <!-- Admin Users Tab -->
+      <div id="adminsTab" class="tab-content">
+        <h3>Admin Users</h3>
+        
+        <div class="controls">
+          <button id="addAdminBtn" class="btn primary">Add New Admin</button>
+        </div>
+
+        <!-- Add/Edit Admin Form -->
+        <form id="adminForm" class="user-form" style="display:none;">
+          <h4>Admin Details</h4>
+          <label for="adminName">Username *</label>
+          <input id="adminName" type="text" placeholder="e.g., admin.user" required />
+          <label for="adminPassword">Password *</label>
+          <input id="adminPassword" type="password" placeholder="Enter password" required />
+          <label for="adminEmail">Email</label>
+          <input id="adminEmail" type="email" placeholder="e.g., admin@example.com" />
+          <label for="adminFullName">Full Name</label>
+          <input id="adminFullName" type="text" placeholder="Admin Name" />
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Save Admin</button>
+            <button type="button" id="cancelAdminBtn" class="btn">Cancel</button>
+          </div>
+        </form>
+
+        <!-- Admins List -->
+        <div id="adminsList" class="users-list" aria-live="polite">
+          <!-- Admins will be rendered here -->
+        </div>
+
+        <template id="adminItemTemplate">
+          <div class="user-item">
+            <div class="user-info">
+              <div class="user-name"></div>
+              <div class="user-email muted"></div>
+            </div>
+            <div class="user-actions">
+              <button class="btn edit">Edit</button>
+              <button class="btn danger delete">Delete</button>
+            </div>
+          </div>
+        </template>
+
+        <p id="emptyAdminsMsg" class="muted">No admin users yet.</p>
+      </div>
+
+      <div class="controls" style="margin-top:20px;">
+        <a href="Dashboard.html" class="btn">Back to Dashboard</a>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="UserManagement.js"></script>
+</body>
+</html>

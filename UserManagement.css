@@ -1,0 +1,31 @@
+/* User Management page styles */
+.tabs { display: flex; gap: 8px; margin: 16px 0; border-bottom: 2px solid #ddd; }
+.tab-btn { background: none; border: none; padding: 12px 16px; font-size: 1rem; font-weight: 600; color: #666; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
+.tab-btn.active { color: #073763; border-bottom-color: #073763; }
+.tab-btn:hover { color: #073763; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.user-form { background: #f6f9fb; padding: 16px; border-radius: 8px; margin: 12px 0; border: 1px solid #ddd; }
+.user-form h4 { margin: 0 0 12px 0; color: #073763; }
+.user-form label { display: block; margin-top: 10px; font-weight: 600; margin-bottom: 4px; }
+.user-form input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+.user-form input:focus { outline: none; border-color: #0066cc; box-shadow: 0 0 4px rgba(0, 102, 204, 0.3); }
+.form-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; }
+
+.users-list { margin: 16px 0; display: flex; flex-direction: column; gap: 8px; }
+.user-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
+.user-info { flex: 1; }
+.user-name { font-weight: 600; color: #073763; }
+.user-email { font-size: 0.9rem; }
+.user-actions { display: flex; gap: 6px; }
+.user-actions .btn { padding: 6px 10px; font-size: 0.9rem; }
+.user-actions .btn.edit { background: #0066cc; color: #fff; border: none; }
+.user-actions .btn.delete { background: #dc3545; color: #fff; border: none; }
+
+.controls { display: flex; gap: 8px; margin-bottom: 12px; }
+
+@media (max-width: 640px) {
+  .user-item { flex-direction: column; align-items: flex-start; }
+  .user-actions { margin-top: 8px; width: 100%; }
+}
