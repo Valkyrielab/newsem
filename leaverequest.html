@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>New Leave Request — ContractCom</title>
+  <link rel="stylesheet" href="../Styles.css" />
+  <link rel="stylesheet" href="leaverequest.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="../Dashboard.html">Dashboard</a>
+      <a href="Contracts.html" class="user-only">Contracts</a>
+      <a href="ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="../UserManagement.html" class="admin-only">User Management</a>
+      <a href="../Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>New Leave Request</h2>
+      <form id="leaveForm" class="submission-form">
+        <div class="profile-block">
+             <!-- can you put a auto fill for hire date based on user profile -->
+          <label for="hireDate">Your hire date</label>
+          <input id="hireDate" type="date" />
+          <div class="profile-actions">
+            <button type="button" id="saveHire" class="btn">Save hire date</button>
+            <button type="button" id="clearHire" class="btn">Clear</button>
+          </div>
+
+          <div id="balances" class="balances" aria-live="polite" style="margin-top:12px">
+            <strong>Leave balances (based on hire date)</strong>
+            <ul>
+              <li>Sick days available: <span id="balSick">-</span></li>
+              <li>Annual days available: <span id="balAnnual">-</span></li>
+              <li>Compassionate days available: <span id="balCompassion">-</span></li>
+              <li>Maternity days available: <span id="balMaternity">-</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <label for="leaveType">Leave type</label>
+        <select id="leaveType" required>
+          <option value="Annual">Annual</option>
+          <option value="Sick">Sick</option>
+          <option value="Compassionate">Compassionate</option>
+          <option value="Unpaid">Unpaid</option>
+          <option value="Maternity">Maternity</option>
+        </select>
+
+        <label for="startDate">Start date</label>
+        <input id="startDate" type="date" required />
+
+        <label for="endDate">End date</label>
+        <input id="endDate" type="date" required />
+
+  <label for="reason">Reason</label>
+  <textarea id="reason" rows="4" placeholder="Optional reason"></textarea>
+
+  <label for="attachment">Attachment (optional image)</label>
+  <input id="attachment" type="file" accept="image/*" />
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Submit for approval</button>
+          <a href="ApprovalsSub.html" class="btn">Back</a>
+        </div>
+      </form>
+    </section>
+  </main>
+  <main class = "bottom"></main>
+
+  <script src="../auth.js"></script>
+  <script src="leaverequest.js"></script>
+</body>
+</html>

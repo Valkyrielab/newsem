@@ -1,0 +1,13 @@
+.submission-form{display:flex;
+    flex-direction:column;
+    gap:10px}
+
+.submission-form label{font-weight:600}
+
+.submission-form input,.submission-form select,.submission-form textarea{padding:8px;
+    border-radius:6px;
+    border:1px solid #d6e9f6}
+
+.form-actions{display:flex;
+    gap:8px;
+    margin-top:8px}
