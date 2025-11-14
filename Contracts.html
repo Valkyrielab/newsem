@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Contracts — ContractCom</title>
+  <link rel="stylesheet" href="../Styles.css" />
+  <link rel="stylesheet" href="Contracts.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="../Dashboard.html">Dashboard</a>
+      <a href="Contracts.html" class="user-only">Contracts</a>
+      <a href="ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="../UserManagement.html" class="admin-only">User Management</a>
+      <a href="../Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2 id="pageTitle">My Contracts</h2>
+
+      <div class="controls">
+        <a href="EmployeeContract.html" class="btn primary">View my employee contract</a>
+        <button id="exportContracts" class="btn">Export</button>
+      </div>
+
+      <div id="contractsList" class="contracts-list" aria-live="polite">
+        <!-- Contracts will be rendered here -->
+      </div>
+
+      <template id="contractItemTemplate">
+        <div class="contract-item">
+          <div class="contract-main">
+            <div class="contract-title"></div>
+            <div class="contract-meta"></div>
+          </div>
+          <div class="contract-actions">
+            <button class="btn view">View</button>
+            <button class="btn export">Export</button>
+            <button class="btn danger delete">Delete</button>
+          </div>
+        </div>
+      </template>
+
+      <p id="emptyMsg" class="muted">No contracts yet.</p>
+    </section>
+  </main>
+
+  <script src="../auth.js"></script>
+  <script src="Contracts.js"></script>
+</body>
+</html>

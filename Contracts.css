@@ -1,0 +1,42 @@
+/* Contracts page specific styles */
+.controls{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-top:12px}
+
+.contracts-list{margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    gap:10px}
+
+.contract-item{display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid rgba(8,59,102,0.06);
+    background:#fff}
+
+.contract-main{display:flex;
+    flex-direction:column}
+    
+.contract-title{font-weight:700}
+
+.contract-meta{font-size:0.9rem;
+    color:var(--muted)}
+
+.contract-actions{display:flex;
+    gap:8px;
+    align-items:center}
+
+.contract-actions .btn.view{background:transparent}
+
+.contract-actions .btn.export{background:transparent}
+
+.contract-actions .btn.danger{background:#b00020;
+    color:#fff;
+    border:none}
+
+.contract-item .btn{padding:6px 8px;
+    border-radius:6px}

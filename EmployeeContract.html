@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Employee Contract — ContractCom</title>
+  <link rel="stylesheet" href="../Styles.css" />
+  <link rel="stylesheet" href="EmployeeContract.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="../Dashboard.html">Dashboard</a>
+      <a href="Contracts.html" class="user-only">Contracts</a>
+      <a href="ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="../UserManagement.html" class="admin-only">User Management</a>
+      <a href="../Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>My Employee Contract</h2>
+
+      <div class="controls">
+        <button id="editBtn" class="btn primary">Edit Contract</button>
+        <button id="downloadBtn" class="btn">Download PDF</button>
+        <button id="signBtn" class="btn success">Sign Contract</button>
+      </div>
+
+      <!-- Contract Display View -->
+      <div id="contractView" class="contract-view">
+        <div class="contract-header">
+          <h3>Employment Agreement</h3>
+          <p class="contract-date">Effective date: <span id="effectiveDate">—</span></p>
+        </div>
+
+        <div class="contract-section">
+          <h4>Employee Information</h4>
+          <div class="contract-row">
+            <span class="label">Full Name:</span>
+            <span id="empName" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Position:</span>
+            <span id="empPosition" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Department:</span>
+            <span id="empDept" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Employee ID:</span>
+            <span id="empId" class="value">—</span>
+          </div>
+        </div>
+
+        <div class="contract-section">
+          <h4>Employment Terms</h4>
+          <div class="contract-row">
+            <span class="label">Employment Type:</span>
+            <span id="empType" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Start Date:</span>
+            <span id="startDate" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">End Date (if applicable):</span>
+            <span id="endDate" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Annual Salary:</span>
+            <span id="salary" class="value">—</span>
+          </div>
+        </div>
+
+        <div class="contract-section">
+          <h4>Reporting & Schedule</h4>
+          <div class="contract-row">
+            <span class="label">Reports To:</span>
+            <span id="reportsTo" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Working Hours:</span>
+            <span id="workHours" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Location:</span>
+            <span id="location" class="value">—</span>
+          </div>
+        </div>
+
+        <div class="contract-section">
+          <h4>Leave Entitlements</h4>
+          <div class="contract-row">
+            <span class="label">Annual Leave:</span>
+            <span id="leaveAnnual" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Sick Leave:</span>
+            <span id="leaveSick" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Compassionate Leave:</span>
+            <span id="leaveCompassion" class="value">—</span>
+          </div>
+        </div>
+
+        <div class="contract-section">
+          <h4>Contract Status</h4>
+          <div class="contract-row">
+            <span class="label">Status:</span>
+            <span id="contractStatus" class="value">—</span>
+          </div>
+          <div class="contract-row">
+            <span class="label">Signed:</span>
+            <span id="contractSigned" class="value">—</span>
+          </div>
+        </div>
+
+        <div class="contract-actions" style="margin-top:20px;">
+          <button id="backBtn" class="btn">Back to Contracts</button>
+        </div>
+      </div>
+
+      <!-- Edit Form (hidden by default) -->
+      <form id="contractForm" class="contract-form" style="display:none;">
+        <h3 style="margin-top:0; color:#073763;">Edit Employee Contract</h3>
+        
+        <fieldset>
+          <legend>Employee Information</legend>
+          <label for="formName">Full Name *</label>
+          <input id="formName" type="text" placeholder="Enter your full name" required />
+          <label for="formPosition">Position *</label>
+          <input id="formPosition" type="text" placeholder="e.g., Software Engineer" required />
+          <label for="formDept">Department</label>
+          <input id="formDept" type="text" placeholder="e.g., Engineering" />
+          <label for="formEmpId">Employee ID</label>
+          <input id="formEmpId" type="text" placeholder="e.g., EMP-001" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Employment Terms</legend>
+          <label for="formEmpType">Employment Type *</label>
+          <select id="formEmpType">
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Temporary">Temporary</option>
+          </select>
+          <label for="formStartDate">Start Date *</label>
+          <input id="formStartDate" type="date" required />
+          <label for="formEndDate">End Date (leave blank if ongoing)</label>
+          <input id="formEndDate" type="date" />
+          <label for="formSalary">Annual Salary</label>
+          <input id="formSalary" type="number" step="0.01" placeholder="e.g., 50000.00" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Reporting & Schedule</legend>
+          <label for="formReportsTo">Reports To</label>
+          <input id="formReportsTo" type="text" placeholder="Manager name" />
+          <label for="formWorkHours">Working Hours</label>
+          <input id="formWorkHours" type="text" placeholder="e.g., 9am-5pm Monday-Friday" />
+          <label for="formLocation">Location</label>
+          <input id="formLocation" type="text" placeholder="e.g., New York Office" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Leave Entitlements</legend>
+          <label for="formLeaveAnnual">Annual Leave (days)</label>
+          <input id="formLeaveAnnual" type="number" step="0.5" placeholder="e.g., 20" />
+          <label for="formLeaveSick">Sick Leave (days)</label>
+          <input id="formLeaveSick" type="number" step="0.5" placeholder="e.g., 10" />
+          <label for="formLeaveCompassion">Compassionate Leave (days)</label>
+          <input id="formLeaveCompassion" type="number" step="0.5" placeholder="e.g., 3" />
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save Contract</button>
+          <button type="button" id="cancelBtn" class="btn">Cancel</button>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <script src="../auth.js"></script>
+  <script src="EmployeeContract.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Disciplinary Hearings — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="DisciplinaryHearings.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="AdminDashboard.html" class="admin-only">Admin Dashboard</a>
+      <a href="UserManagement.html" class="admin-only">User Management</a>
+      <a href="Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Disciplinary Hearings</h2>
+      <p class="muted">Schedule and track employee disciplinary hearings.</p>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by employee name or username..." class="search-input" />
+        <select id="sortSelect" class="select">
+          <option value="">Sort</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="date-newest">Hearing Date: Newest</option>
+          <option value="date-oldest">Hearing Date: Oldest</option>
+        </select>
+        <button id="clearSearch" class="btn">Clear</button>
+        <button id="addNew" class="btn primary">+ Schedule Hearing</button>
+      </div>
+
+      <div id="hearingsList" class="hearings-list" aria-live="polite"></div>
+      <p id="emptyMsg" class="muted">No disciplinary hearings scheduled.</p>
+
+      <template id="hearingItemTemplate">
+        <div class="hearing-card">
+          <div class="hearing-header">
+            <div class="hearing-title"></div>
+            <div class="hearing-meta muted"></div>
+          </div>
+          <div class="hearing-details">
+            <p><strong>Employee:</strong> <span class="empName">—</span></p>
+            <p><strong>Hearing Date:</strong> <span class="hearingDate">—</span></p>
+            <p><strong>Hearing Time:</strong> <span class="hearingTime">—</span></p>
+            <p><strong>Reason:</strong> <span class="reason">—</span></p>
+            <p><strong>Status:</strong> <span class="status hearing-badge">—</span></p>
+            <p><strong>Panel Members:</strong> <span class="panelMembers">—</span></p>
+          </div>
+          <div class="hearing-actions">
+            <button class="btn-small view">View</button>
+            <button class="btn-small edit">Edit</button>
+            <button class="btn-small export">Export</button>
+            <button class="btn-small delete danger">Delete</button>
+          </div>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <div id="hearingModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Schedule Disciplinary Hearing</h3>
+        <button id="closeModal" class="close">&times;</button>
+      </div>
+      <form id="hearingForm">
+        <div class="form-group">
+          <label for="formUsername">Employee Username *</label>
+          <input id="formUsername" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formEmpName">Employee Name *</label>
+          <input id="formEmpName" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formHearingDate">Hearing Date *</label>
+          <input id="formHearingDate" type="date" required />
+        </div>
+        <div class="form-group">
+          <label for="formHearingTime">Hearing Time *</label>
+          <input id="formHearingTime" type="time" required />
+        </div>
+        <div class="form-group">
+          <label for="formReason">Reason for Hearing *</label>
+          <textarea id="formReason" rows="4" required placeholder="Details about the disciplinary hearing..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="formPanelMembers">Panel Members</label>
+          <textarea id="formPanelMembers" rows="2" placeholder="Names of panel members..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="formStatus">Status</label>
+          <select id="formStatus">
+            <option value="Scheduled">Scheduled</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="formOutcome">Hearing Outcome</label>
+          <textarea id="formOutcome" rows="3" placeholder="Outcome of the hearing..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save Hearing</button>
+          <button type="button" id="cancelForm" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="DisciplinaryHearings.js"></script>
+</body>
+</html>

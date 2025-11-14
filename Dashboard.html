@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      
+      <a href="home.html" id="nav-user" class="role-only user-only">Home</a>
+      <a href="UserManagement.html" id="nav-admin" class="role-only admin-only">User Management</a>
+      <a href="AdminDashboard.html" id="nav-admin" class="role-only admin-only">Admin Dashboard</a>
+      <a href="Users/Contracts.html" id="nav-user" class="role-only user-only">Contracts</a>
+      <a href="Users/ApprovalsSub.html" id="nav-user" class="role-only user-only">Approvals & Submissions</a>
+      <a href="Login.html" id="nav-home">Login</a>
+    </nav>
+    <div class="user-area" id="userArea">
+      <!-- Filled by JS -->
+    </div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2 id="greeting">Dashboard</h2>
+      <div id="adminPanel" class="panel admin-only" hidden>
+        <h3>Admin controls</h3>
+        <ul>
+          <li><a href="UserManagement.html">Manage users & admins</a></li>
+          <li><a href="AdminDashboard.html">View all contracts & documents</a></li>
+          <li><a href="AdminDashboard.html">View warnings & discipline</a></li>
+        </ul>
+      </div>
+
+      <div id="userPanel" class="panel user-only" hidden>
+        <h3>Your contracts</h3>
+        <p>You can create, edit, and export your contracts here.</p>
+  <a href="Users/Contracts.html" class="btn primary">Create new contract</a>
+      </div>
+
+      <p id="notAuth" class="muted" hidden>If you're seeing this, you're not authenticated. <a
+         href="Login.html">Sign in</a></p>
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Employee Contracts — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="EmployeeContracts.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="AdminDashboard.html" class="admin-only">Admin Dashboard</a>
+      <a href="UserManagement.html" class="admin-only">User Management</a>
+      <a href="Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Employee Contracts</h2>
+      <p class="muted">Manage all employee contracts across the organization.</p>
+
+      <!-- Search & Filter -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by employee name or username..." class="search-input" />
+        <select id="sortSelect" class="select">
+          <option value="">Sort</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="date-newest">Start Date: Newest</option>
+          <option value="date-oldest">Start Date: Oldest</option>
+        </select>
+        <button id="clearSearch" class="btn">Clear</button>
+        <button id="addNew" class="btn primary">+ Add New Contract</button>
+      </div>
+
+      <!-- Contracts List -->
+      <div id="contractsList" class="contracts-table" aria-live="polite"></div>
+      <p id="emptyMsg" class="muted">No employee contracts found.</p>
+
+      <!-- Contract Item Template -->
+      <template id="contractItemTemplate">
+        <div class="contract-row">
+          <div class="contract-cell">
+            <div class="contract-name"></div>
+            <div class="contract-username muted"></div>
+          </div>
+          <div class="contract-cell">
+            <div class="contract-position"></div>
+          </div>
+          <div class="contract-cell">
+            <div class="contract-department"></div>
+          </div>
+          <div class="contract-cell">
+            <div class="contract-startDate"></div>
+          </div>
+          <div class="contract-cell">
+            <div class="contract-salary"></div>
+          </div>
+          <div class="contract-cell status-cell">
+            <span class="status-badge"></span>
+          </div>
+          <div class="contract-cell actions-cell">
+            <button class="btn-small view">View</button>
+            <button class="btn-small edit">Edit</button>
+            <button class="btn-small export">Export</button>
+            <button class="btn-small delete danger">Delete</button>
+          </div>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <!-- Modal for Add/Edit Contract -->
+  <div id="contractModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add New Contract</h3>
+        <button id="closeModal" class="close">&times;</button>
+      </div>
+      <form id="contractForm" class="contract-form">
+        <div class="form-group">
+          <label for="formUsername">Username *</label>
+          <input id="formUsername" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formName">Employee Name *</label>
+          <input id="formName" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formPosition">Position *</label>
+          <input id="formPosition" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="formDepartment">Department</label>
+          <input id="formDepartment" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="formEmpType">Employment Type</label>
+          <select id="formEmpType">
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Temporary">Temporary</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="formStartDate">Start Date</label>
+          <input id="formStartDate" type="date" />
+        </div>
+        <div class="form-group">
+          <label for="formEndDate">End Date</label>
+          <input id="formEndDate" type="date" />
+        </div>
+        <div class="form-group">
+          <label for="formSalary">Annual Salary</label>
+          <input id="formSalary" type="number" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="formStatus">Status</label>
+          <select id="formStatus">
+            <option value="Pending">Pending</option>
+            <option value="Active">Active</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Save Contract</button>
+          <button type="button" id="cancelForm" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="EmployeeContracts.js"></script>
+</body>
+</html>
