@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Approved Requests — ContractCom</title>
+  <link rel="stylesheet" href="../Styles.css" />
+  <link rel="stylesheet" href="approvedrequest.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="../Dashboard.html">Dashboard</a>
+      <a href="Contracts.html" class="user-only">Contracts</a>
+      <a href="ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="../UserManagement.html" class="admin-only">User Management</a>
+      <a href="../Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Approved Requests</h2>
+
+      <div class="controls">
+        <a class="btn" href="Approvals.html">Open All Approvals</a>
+      </div>
+
+      <div id="approvedList" class="approvals-list" aria-live="polite"></div>
+
+      <p id="emptyMsg" class="muted">No approved requests yet.</p>
+
+      <!-- Approved item template (moved here) -->
+      <template id="approvedItemTemplate">
+        <div class="approval-item">
+          <img class="approval-image" src="images/tick.png" alt="attachment" />
+          <div class="approval-main">
+            <div class="approval-title"></div>
+            <div class="approval-meta"></div>
+            <div class="approval-status"></div>
+            <div class="approval-leaveType muted"></div>
+            <div class="approval-approvedAt muted"></div>
+          </div>
+          <div class="approval-actions">
+            <button class="btn view">View</button>
+            <button class="btn export">Export</button>
+          </div>
+        </div>
+      </template>
+
+    </section>
+  </main>
+
+  <script src="../auth.js"></script>
+  <script src="approvedrequest.js"></script>
+</body>
+</html>

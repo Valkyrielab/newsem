@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Approvals & Submissions — ContractCom</title>
+  <link rel="stylesheet" href="../Styles.css" />
+  <link rel="stylesheet" href="ApprovalsSub.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="../Dashboard.html">Dashboard</a>
+      <a href="Contracts.html" class="user-only">Contracts</a>
+      <a href="ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="../UserManagement.html" class="admin-only">User Management</a>
+      <a href="../Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2 id="pageTitle">Approvals & Submissions</h2>
+      <nav class="cards">
+        <div class="controls"></div>
+          <div class="card1">
+          <!-- Submission form card -->
+              <a href="leaverequest.html" class="btn primary">
+                <img src="images/leave.jpg" alt="New Leave Request" class="logo" />
+                New Leave Request</a>
+          </div>
+          <div class="card1">
+            <!-- Approvals page card -->
+            <a href="Approvals.html" class="btn primary"> 
+            <img src="images/a-r.jpg" alt="Open requests" class="logo" />
+              Leave Requests</a>
+          </div>
+          <div class="card1">
+            <!-- Approved requests page card -->
+              <a href="approvedrequest.html" alt="Approved" class="btn">
+              <img src="images/appr.jpg" alt="Open requests" class="logo" />  
+                Approved Requests</a>
+          </div>
+        </div>
+      </nav>
+    </section>
+  
+  </main>
+  </body>
+  <script src="../auth.js"></script>
+  <script src="ApprovalsSub.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* Styles specific to approved requests page */
+.approvals-list { margin-top: 12px; 
+    display:flex; 
+    flex-direction:column; 
+    gap:12px }
+
+.approval-item { display:flex; 
+    align-items:center; 
+    gap:12px; 
+    padding:12px; 
+    border-radius:8px; 
+    border:1px solid rgba(8,59,102,0.06); 
+    background:#fff }
+
+.approval-image { width:72px; 
+    height:72px; 
+    border-radius:8px; 
+    object-fit:cover; 
+    background:#f0f4f8; 
+    flex:0 0 72px }
+
+.approval-main { display:flex; 
+    flex-direction:column; 
+    flex:1 1 auto; 
+    min-width:0 }
+
+.approval-title { font-weight:700; 
+    color:#073763 }
+
+.approval-meta { font-size:0.9rem; 
+    color:var(--muted); 
+    margin-top:4px }
+.approval-approvedAt { font-size:0.85rem; 
+    color:var(--muted); 
+    margin-top:6px }
+
+.approval-actions { display:flex;
+    gap:8px; 
+    align-items:center; 
+    margin-left:8px }
+
+
+
+.approval-actions .btn.export { background:#007bff; 
+    color:#fff; 
+    border:none }
+    
+@media (max-width:640px){ .approval-image{width:56px;height:56px} }

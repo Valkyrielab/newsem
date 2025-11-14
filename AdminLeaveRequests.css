@@ -1,0 +1,12 @@
+.approvals-list { margin-top: 12px; display: grid; gap: 12px; }
+.approval-item { display:flex; gap:12px; align-items:flex-start; padding:10px; border:1px solid #e6e6e6; border-radius:6px; background:#fff; }
+.approval-image { width:56px; height:56px; object-fit:cover; border-radius:4px; }
+.approval-main { flex:1; }
+.approval-title { font-weight:600; margin-bottom:4px; }
+.approval-meta { font-size:12px; color:#666; margin-bottom:6px; }
+.approval-status { font-size:13px; display:inline-block; margin-bottom:6px; }
+.approval-actions { display:flex; gap:8px; align-items:center; }
+.muted { color:#666; }
+.primary { background:#1e88e5; color:#fff; border:none; padding:6px 10px; border-radius:4px; }
+.danger { background:#e53935; color:#fff; border:none; padding:6px 10px; border-radius:4px; }
+.btn { padding:6px 10px; border-radius:4px; border:1px solid #ddd; background:#f5f5f5; cursor:pointer; }

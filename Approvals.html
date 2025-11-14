@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Approvals — ContractCom</title>
+  <link rel="stylesheet" href="../Styles.css" />
+  <link rel="stylesheet" href="Approvals.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="../Dashboard.html">Dashboard</a>
+      <a href="Contracts.html" class="user-only">Contracts</a>
+      <a href="ApprovalsSub.html" class="user-only">Approvals & Submissions</a>
+      <a href="../UserManagement.html" class="admin-only">User Management</a>
+      <a href="../Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Approvals & Submissions</h2>
+
+      <div class="controls">
+        <a class="btn primary" href="leaverequest.html">
+          <img src="../images/leave.jpg" alt="New Leave" class="logo" />
+          New Leave Request
+        </a>
+        <a class="btn" href="ApprovalsSub.html">Open Approvals Page</a>
+      </div>
+
+      <h3>Pending submissions</h3>
+      <div id="approvalsList" class="approvals-list" aria-live="polite"></div>
+
+      <div style="margin-top:12px;">
+        <a href="approvedrequest.html" class="btn">View approved requests</a>
+      </div>
+
+      <p id="emptyMsg" class="muted">No pending approvals yet.</p>
+
+      <!-- Pending item template -->
+      <template id="approvalItemTemplate">
+        <div class="approval-item">
+          <img class="approval-image" src="images/tick.png" alt="attachment" />
+          <div class="approval-main">
+            <div class="approval-title"></div>
+            <div class="approval-meta"></div>
+            <div class="approval-status"></div>
+            <div class="approval-leaveType muted"></div>
+          </div>
+          <div class="approval-actions">
+            <button class="btn view">View</button>
+            <button class="btn approve">Approve</button>
+            <button class="btn reject">Reject</button>
+            <button class="btn withdraw">Withdraw</button>
+          </div>
+        </div>
+      </template>
+
+
+
+    </section>
+  </main>
+
+  <script src="../auth.js"></script>
+  <script src="Approvals.js"></script>
+</body>
+</html>

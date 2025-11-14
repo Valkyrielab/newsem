@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Dashboard — ContractCom</title>
+  <link rel="stylesheet" href="Styles.css" />
+  <link rel="stylesheet" href="AdminDashboard.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="images/logo.jpg" alt="ContractCom logo" class="logo" />
+    <nav class="main-nav">
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="UserManagement.html" class="admin-only">User Management</a>
+      <a href="AdminDashboard.html" class="admin-only">Admin Dashboard</a>
+      <a href="Login.html">Sign in</a>
+    </nav>
+    <div class="user-area" id="userArea"></div>
+  </header>
+
+  <main class="center">
+    <section class="card">
+      <h2>Admin Dashboard</h2>
+      <p class="muted">View all employee contracts, confirmation letters, warnings, and disciplinary hearings.</p>
+
+      <!-- Tabs Navigation -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="contracts">Employee Contracts</button>
+        <button class="tab-btn" data-tab="confirmations">Confirmation Letters</button>
+        <button class="tab-btn" data-tab="Maternity">Maternity Agreement</button>
+        <button class="tab-btn" data-tab="warnings">Warnings</button>
+        <button class="tab-btn" data-tab="disciplinary">Disciplinary Hearings</button>
+      </div>
+
+      <!-- Search & Filter -->
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by employee name or username..." class="search-input" />
+        <select id="sortSelect" class="select">
+          <option value="">Sort</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="date-newest">Date: Newest</option>
+          <option value="date-oldest">Date: Oldest</option>
+        </select>
+        <button id="clearSearch" class="btn">Clear</button>
+      </div>
+
+      <!-- TAB: Employee Contracts -->
+      <div id="contracts" class="tab-content active">
+        <h3>Employee Contracts</h3>
+        <div id="contractsList" class="items-list" aria-live="polite"></div>
+        <p id="contractsEmpty" class="muted">No employee contracts found.</p>
+
+        <template id="contractItemTemplate">
+          <div class="item-card">
+            <div class="item-header">
+              <div class="item-title"></div>
+              <div class="item-meta muted"></div>
+            </div>
+            <div class="item-details">
+              <p><strong>Position:</strong> <span class="position">—</span></p>
+              <p><strong>Department:</strong> <span class="department">—</span></p>
+              <p><strong>Employment Type:</strong> <span class="empType">—</span></p>
+              <p><strong>Start Date:</strong> <span class="startDate">—</span></p>
+              <p><strong>Salary:</strong> <span class="salary">—</span></p>
+              <p><strong>Status:</strong> <span class="status">—</span></p>
+            </div>
+            <div class="item-actions">
+              <button class="btn view">View Full Contract</button>
+              <button class="btn export">Export PDF</button>
+              <button class="btn edit">Edit</button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- TAB: Confirmation Letters -->
+      <div id="confirmations" class="tab-content">
+        <h3>Confirmation Letters</h3>
+        <div id="confirmationsList" class="items-list" aria-live="polite"></div>
+        <p id="confirmationsEmpty" class="muted">No confirmation letters found.</p>
+
+        <template id="confirmationItemTemplate">
+          <div class="item-card">
+            <div class="item-header">
+              <div class="item-title"></div>
+              <div class="item-meta muted"></div>
+            </div>
+            <div class="item-details">
+              <p><strong>Employee:</strong> <span class="empName">—</span></p>
+              <p><strong>Issue Date:</strong> <span class="issueDate">—</span></p>
+              <p><strong>Confirmation Type:</strong> <span class="confirmType">—</span></p>
+              <p><strong>Details:</strong> <span class="details">—</span></p>
+            </div>
+            <div class="item-actions">
+              <button class="btn view">View Letter</button>
+              <button class="btn export">Export PDF</button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- TAB: Maternity Agreement -->
+      <div id="Maternity" class="tab-content">
+        <h3>Maternity Agreements</h3>
+        <div id="maternityList" class="items-list" aria-live="polite"></div>
+        <p id="maternityEmpty" class="muted">No maternity agreements found.</p>
+
+        <template id="maternityItemTemplate">
+          <div class="item-card">
+            <div class="item-header">
+              <div class="item-title"></div>
+              <div class="item-meta muted"></div>
+            </div>
+            <div class="item-details">
+              <p><strong>Employee:</strong> <span class="empName">—</span></p>
+              <p><strong>Start Date:</strong> <span class="startDate">—</span></p>
+              <p><strong>End Date:</strong> <span class="endDate">—</span></p>
+              <p><strong>Duration (Days):</strong> <span class="duration">—</span></p>
+              <p><strong>Status:</strong> <span class="status">—</span></p>
+            </div>
+            <div class="item-actions">
+              <button class="btn view">View Agreement</button>
+              <button class="btn export">Export PDF</button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- TAB: Warnings -->
+      <div id="warnings" class="tab-content">
+        <h3>Employee Warnings</h3>
+        <div id="warningsList" class="items-list" aria-live="polite"></div>
+        <p id="warningsEmpty" class="muted">No warnings found.</p>
+
+        <template id="warningItemTemplate">
+          <div class="item-card warning-card">
+            <div class="item-header">
+              <div class="item-title"></div>
+              <div class="item-meta muted"></div>
+            </div>
+            <div class="item-details">
+              <p><strong>Employee:</strong> <span class="empName">—</span></p>
+              <p><strong>Warning Date:</strong> <span class="warningDate">—</span></p>
+              <p><strong>Level:</strong> <span class="level warning-badge">—</span></p>
+              <p><strong>Reason:</strong> <span class="reason">—</span></p>
+              <p><strong>Notes:</strong> <span class="notes">—</span></p>
+            </div>
+            <div class="item-actions">
+              <button class="btn view">View Details</button>
+              <button class="btn delete danger">Delete</button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- TAB: Disciplinary Hearings -->
+      <div id="disciplinary" class="tab-content">
+        <h3>Disciplinary Hearings</h3>
+        <div id="disciplinaryList" class="items-list" aria-live="polite"></div>
+        <p id="disciplinaryEmpty" class="muted">No disciplinary hearings scheduled.</p>
+
+        <template id="disciplinaryItemTemplate">
+          <div class="item-card disciplinary-card">
+            <div class="item-header">
+              <div class="item-title"></div>
+              <div class="item-meta muted"></div>
+            </div>
+            <div class="item-details">
+              <p><strong>Employee:</strong> <span class="empName">—</span></p>
+              <p><strong>Hearing Date:</strong> <span class="hearingDate">—</span></p>
+              <p><strong>Hearing Time:</strong> <span class="hearingTime">—</span></p>
+              <p><strong>Reason for Hearing:</strong> <span class="reason">—</span></p>
+              <p><strong>Status:</strong> <span class="status disciplinary-badge">—</span></p>
+              <p><strong>Panel Members:</strong> <span class="panelMembers">—</span></p>
+            </div>
+            <div class="item-actions">
+              <button class="btn view">View Hearing Details</button>
+              <button class="btn">Add Outcome</button>
+              <button class="btn delete danger">Delete</button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="AdminDashboard.js"></script>
+</body>
+</html>
