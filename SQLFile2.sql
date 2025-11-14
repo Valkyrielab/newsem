@@ -138,3 +138,40 @@ CREATE TABLE DisciplinaryStatus (
     lastUpdatedDate DATETIME,
     FOREIGN KEY (RowID) REFERENCES EmploymentContract(EmploymentContractID)
 );
+
+CREATE TABLE ContextMemory (
+    ContextID INT PRIMARY KEY IDENTITY(1,1),
+    UserID VARCHAR(50) NOT NULL,
+    ContextType VARCHAR(50),       -- e.g., 'Preference', 'RecentAction'
+    ContextKey VARCHAR(100),       -- e.g., 'humor_level', 'last_contract'
+    ContextValue VARCHAR(MAX),     -- e.g., 'high', 'EmploymentContractID=12'
+    LastUpdated DATETIME DEFAULT GETDATE()
+);
+
+MERGE ContextMemory AS target
+USING (SELECT '123' AS UserID, 'Preference' AS ContextType, 'humor_level' AS ContextKey, 'high' AS ContextValue) AS source
+ON target.UserID = source.UserID AND target.ContextKey = source.ContextKey
+WHEN MATCHED THEN
+    UPDATE SET ContextValue = source.ContextValue, LastUpdated = GETDATE()
+WHEN NOT MATCHED THEN
+    INSERT (UserID, ContextType, ContextKey, ContextValue)
+    VALUES (source.UserID, source.ContextType, source.ContextKey, source.ContextValue);
+
+SELECT ContextKey, ContextValue
+FROM ContextMemory
+WHERE UserID = '123'
+ORDER BY LastUpdated DESC;
+
+SELECT TOP 5 EmploymentContractID, Surname, Firstname, ContractCreateDate
+FROM EmploymentContract
+WHERE CreatedBy = 'DonnaAI'
+ORDER BY ContractCreateDate DESC;
+
+SELECT cm.ContextKey, cm.ContextValue, ec.Surname, ec.Firstname, ec.JobTitle
+FROM ContextMemory cm
+LEFT JOIN EmploymentContract ec ON cm.ContextValue LIKE CONCAT('%', ec.EmploymentContractID, '%')
+WHERE cm.UserID = '123'
+ORDER BY cm.LastUpdated DESC;
+
+INSERT INTO ContextMemory (UserID, ContextType, ContextKey, ContextValue)
+VALUES ('123', 'Trigger', 'stress', 'Take a deep breath. Or better yet, let me handle it.');
