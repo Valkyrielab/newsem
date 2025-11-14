@@ -148,30 +148,27 @@ CREATE TABLE ContextMemory (
     LastUpdated DATETIME DEFAULT GETDATE()
 );
 
-MERGE ContextMemory AS target
-USING (SELECT '123' AS UserID, 'Preference' AS ContextType, 'humor_level' AS ContextKey, 'high' AS ContextValue) AS source
-ON target.UserID = source.UserID AND target.ContextKey = source.ContextKey
-WHEN MATCHED THEN
-    UPDATE SET ContextValue = source.ContextValue, LastUpdated = GETDATE()
-WHEN NOT MATCHED THEN
-    INSERT (UserID, ContextType, ContextKey, ContextValue)
-    VALUES (source.UserID, source.ContextType, source.ContextKey, source.ContextValue);
+INSERT INTO CompanyName (CompanyNameID, CompanyName, CreatedBy)
+VALUES (1, 'TechCorp', 'Michelle Muller');
 
-SELECT ContextKey, ContextValue
-FROM ContextMemory
-WHERE UserID = '123'
-ORDER BY LastUpdated DESC;
 
-SELECT TOP 5 EmploymentContractID, Surname, Firstname, ContractCreateDate
-FROM EmploymentContract
-WHERE CreatedBy = 'DonnaAI'
-ORDER BY ContractCreateDate DESC;
+INSERT INTO ContractType (ContractTypeID, CompanyNameID, ContractType, CreatedBy)
+VALUES (1, 1, 'Permanent', 'Michelle Muller');
 
-SELECT cm.ContextKey, cm.ContextValue, ec.Surname, ec.Firstname, ec.JobTitle
-FROM ContextMemory cm
-LEFT JOIN EmploymentContract ec ON cm.ContextValue LIKE CONCAT('%', ec.EmploymentContractID, '%')
-WHERE cm.UserID = '123'
-ORDER BY cm.LastUpdated DESC;
+INSERT INTO EmploymentContract (
+    EmploymentContractID, ContractCreateDate, CompanyNameID, ContractTypeID,
+    Surname, Firstname, IdentificationType, identitynumber, JobTitle, Department,
+    Branch, Remuneration, ContractStartDate, ContractEndDate, ContractStatus, ProjectDetail, CreatedBy
+)
+VALUES (
+    1, GETDATE(), 1, 1,
+    'Doe', 'John', 'ID', 123456789, 'Software Engineer', 'IT',
+    'Main Branch', 75000.00, '2025-01-01', '2026-01-01', 'Active', 'Project Alpha', 'Michelle Muller'
+);
+
+UPDATE EmploymentContract
+SET lastUpdatedBy = 'Michelle Muller', lastUpdatedDate = GETDATE()
+
 
 INSERT INTO ContextMemory (UserID, ContextType, ContextKey, ContextValue)
 VALUES ('123', 'Trigger', 'stress', 'Take a deep breath. Or better yet, let me handle it.');
